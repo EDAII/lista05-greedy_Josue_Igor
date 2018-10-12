@@ -1,3 +1,5 @@
+import csv
+
 def selection_sort(list_number):
     size_list = len(list_number)
     for i in range(0,size_list):
@@ -34,10 +36,24 @@ def find_platform_avaliable(arrival_time, departure_time, amount_bus_arrived):
 
     return result
 
-arrive = [1100, 940, 859,950, 900, 1500, 1800]
-departure = [1110, 1200, 1300, 1120, 1130, 1900, 2000]
-length = len(arrive)
+def convert_list_to_int(time_list):
+    list_coverted = list(map(int, time_list))
+    return list_coverted
+
+dados = {}
+with open("bus_schedule.csv") as arquivocsv:
+    ler = csv.DictReader(arquivocsv, delimiter=",")
+    for linha in ler:
+        for chave, valor in linha.items():
+            if chave not in dados:
+                 dados[chave] = []
+            dados[chave].append(valor)
+
+arrive = convert_list_to_int(dados['hora_chegada'])
+departure = convert_list_to_int(dados['hora_partida'])
+
+length = len(dados['hora_chegada'])
 
 print("Numero minimo de plataformas necessario = ", find_platform_avaliable(arrive, departure, length))
-print("horario chegada: ", arrive)
-print("horario saida", departure)
+# print("horario chegada: ",dados['hora_chegada'])
+# print("horario saida",dados['hora_partida'])
