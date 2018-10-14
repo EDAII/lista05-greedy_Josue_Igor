@@ -40,7 +40,8 @@ def convert_list_to_int(time_list):
     return list_coverted
 
 dados = {}
-with open("bus_schedule.csv") as arquivocsv:
+data = input("Digite seu registro de Bus: ")
+with open(data) as arquivocsv:
     ler = csv.DictReader(arquivocsv, delimiter=",")
     for linha in ler:
         for chave, valor in linha.items():
