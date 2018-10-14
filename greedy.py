@@ -11,8 +11,7 @@ def selection_sort(list_number):
     return list_number
 
 def find_platform_avaliable(arrival_time, departure_time, amount_bus_arrived):
-    # arrival_time.sort()
-    # departure_time.sort()
+
     selection_sort(arrival_time)
     selection_sort(departure_time)
 
