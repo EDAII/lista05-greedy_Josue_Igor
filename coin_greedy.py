@@ -1,8 +1,28 @@
 import math
-coins = [1, 5, 10, 25, 50]
-bank_note = [1, 2, 5, 10, 20, 50, 100]
+coins = list()
+bank_note = list()
 
+
+def register_coins():
+    print("Digita as moedas do seu sistema monetario")
+    coin = 300
+    while coin!=0:
+        coin = int(input())
+        if isinstance(coin,int) and coin !=0:
+            coins.append(coin)
+        else:
+            break
+def register_notes():
+    print("Digita as notas do seu sistema monetario")
+    note = 300
+    while note!=0:
+        note = int(input())
+        if isinstance(note,int) and note!=0:
+            bank_note.append(note)
+        else:
+            break
 def calc_change_real(integer):
+
     answer_int = list()
     for money in reversed(bank_note):
         while integer >= money:
@@ -21,15 +41,15 @@ def calc_change_coin(decimal):
     return answer_dec
 
 def main():
-    money_value = float(input("Insira um numero: "))
+    register_coins()
+    register_notes()
+    money_value = float(input("Insira o valor em reais: "))
     split_integer_decimal = math.modf(money_value)
     decimal = round(split_integer_decimal[0], 2)*100
 
     integer = math.floor(money_value)
     decimal_to_int = math.floor(decimal)
 
-    # print("Inteiro", integer)
-    # print("decimal", decimal_to_int)
 
     solution_integer = calc_change_real(integer)
     solution_decimal = calc_change_coin(decimal_to_int)

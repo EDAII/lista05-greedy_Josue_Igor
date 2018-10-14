@@ -54,5 +54,3 @@ departure = convert_list_to_int(dados['hora_partida'])
 length = len(dados['hora_chegada'])
 
 print("Numero minimo de plataformas necessario = ", find_platform_avaliable(arrive, departure, length))
-# print("horario chegada: ",dados['hora_chegada'])
-# print("horario saida",dados['hora_partida'])
